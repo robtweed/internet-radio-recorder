@@ -1,0 +1,9 @@
+http://a.files.bbci.co.uk/media/live/manifesto/audio/simulcast/hls/uk/sbr_high/ak/bbc_radio_three.m3u8
+/Users/robtweed/Music/radio3/
+.mp4
+/Applications/VLC 2.app
+2
+
+
+
+

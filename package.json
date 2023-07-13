@@ -1,0 +1,26 @@
+{
+  "name": "internet-radio-recorder",
+  "version": "0.0.1",
+  "config": {
+    "date": "13 July 2023"
+  },
+  "description": "VLC-based Internet Radio Recorder",
+  "main": "./recorder.mjs",
+  "type": "module",
+  "engines" : {
+    "node" : ">=18.0.0"
+  },
+  "scripts": {
+    "start": "node node_modules/internet-radio-recorder/recorder.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robtweed/internet-radio-recorder.git"
+  },
+  "author": "Rob Tweed, MGateway Ltd",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/robtweed/internet-radio-recorder/issues"
+  },
+  "homepage": "https://github.com/robtweed/internet-radio-recorderp#readme"
+}
