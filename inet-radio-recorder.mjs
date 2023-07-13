@@ -100,7 +100,7 @@ let recorder = function(schedule, url, filePath, ext, vlcPath) {
       let file = filePath + date + '_' + hour + '-' + minute;
       var params = [file, url, ext, vlcPath];
       console.log('forking worker');
-      tasks[time] = fork(__dirname + '/recordVLC.js', params);
+      tasks[time] = fork(__dirname + '/recordVLC.mjs', params);
     }
   
     if (endTimes[time]) {
