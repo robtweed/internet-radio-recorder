@@ -27,6 +27,10 @@
 */
 
 import { fork } from 'node:child_process';
+import path from 'path';
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 let tasks = {};
 let startTimes = {};
@@ -96,7 +100,7 @@ let recorder = function(schedule, url, filePath, ext, vlcPath) {
       let file = filePath + date + '_' + hour + '-' + minute;
       var params = [file, url, ext, vlcPath];
       console.log('forking worker');
-      tasks[time] = fork('./recordVLC.js', params);
+      tasks[time] = fork(__dirname + '/recordVLC.js', params);
     }
   
     if (endTimes[time]) {

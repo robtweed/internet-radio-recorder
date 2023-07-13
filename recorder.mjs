@@ -1,4 +1,4 @@
-/*!
+/*
 
  --------------------------------------------------------------------------------
  | internet-radio-recorder: Node.js and VLC-based MacOS Internet Radio recorder |
@@ -35,7 +35,7 @@
 import { open } from 'node:fs/promises';
 import {recorder} from './inet-radio-recorder.mjs';
 
-let radio_recorder = function(paramsPath, schedulePath) {
+let radio_recorder = async function(paramsPath, schedulePath) {
 
   let schedule = {};
 

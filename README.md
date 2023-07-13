@@ -32,7 +32,7 @@ Yes! *internet-radio-recorder* has been designed to work with a simple schedule 
 specify the programme(s) you want to record.
 
 I actually wrote and designed *internet-radio-recorder* to record the BBC Proms broadcasts, and you'll find an example
-schedule file for the first part of the 2023 BBC Proms season included in the repository.  Simply edit this file to your own needs.
+schedule file for the first part of the 2023 BBC Proms season included in the installation repository.  Simply edit this file to your own needs.
 
 You'll see that the schedule is defined by each line of the file specifying three values separated by a space:
 
@@ -49,47 +49,68 @@ eg:
 
 ## Installing internet-radio-recorder
 
-
-
-
-## Configuring internet-radio-recorder
-
-- Create a folder on your MacOS system for your *internet-radio-recorder* system, eg:
-
-         /Users/xxxxx/recorder
-
-- Switch to this folder:
-
-        cd /Users/xxxxx/recorder
-
-- Install *internet-radio-recorder*
-
         npm install internet-radio-recorder
 
 
-- You now need to create two text files in this folder:
+## Using internet-radio-recorder to Record from a BBC Radio Internet Stream
 
-- schedule.txt
+The easiest way to use the *internet-radio-recorder* module is to use my pre-built installation repository.
 
-  This is the schedule file.  Use the included copy as a starting point and edit it as needed.  See the earlier section above that describes its format.
+The current version will only run on an Apple Mac computer running MacOS (any version).
 
-- params.txt
+Make sure you have the following installed on your computer:
 
-  This allows you to customise *internet-radio-recorder* for your own system.  Use the included copy as a starting point and edit it as needed.
+- Node.js version 18.x or later
+- VLC (version 3.x or later)
+- git (this is usually included in XCode on a Mac, but other options may be available - check on Google).
 
-  This file consists of 4 or 5 lines:
 
-  - Line 1: the URL for the Internet Radio Stream you want to use
-  - Line 2: The file path into which you want *internet-radio-recorder* to create its files.  Note that this folder must already exist before running *internet-radio-recorder*
-  - Line 3: The file extension for the files that *internet-radio-recorder* will create.  For the BBC High Quality streams, you should use *.mp4*.
-  - Line 4: The file path in which VLC is installed, eg */Applications/VLC*
-  - Line 5: This line is optional and allows you to specify a number of minutes that is deducted from each scheduled start time and added to each scheduled end time.  This can be useful to ensure that VLC's recorded stream has properly stabilised and to ensure you don't prematurely cut off the end of the programme.  I'd suggest a value of 2 for this line.
+Now do the following using the MacOS Terminal window:
+
+- Navigate to the folder of your choice, and then clone my BBC Radio Recorder repository:
+
+        git clone https://github.com/robtweed/bbc-radio-recorder
+
+  You'll now have a new folder named *bbc-radio-recorder* containing everything you need to get started.
+
+
+- Switch to this folder:
+
+        cd bbc-radio-recorder
+
+- Install the *internet-radio-recorder* module:
+
+        npm install
+
+
+- You'll see two text files in the *bbc-radio-recorder* folder:
+
+  - schedule.txt
+
+    This is the schedule file.  Use the included copy as a starting point and edit it as needed.  See the earlier section above that describes its format.
+
+  - params.txt
+
+    This allows you to customise the recorder for your own system.  Use the included copy as a starting point and edit it as needed.
+
+    This file consists of 4 or 5 lines:
+
+    - Line 1: the URL for the Internet Radio Stream you want to use
+    - Line 2: The file path into which you want *internet-radio-recorder* to create its files.  Note that this folder must already exist before running *internet-radio-recorder*
+    - Line 3: The file extension for the files that *internet-radio-recorder* will create.  For the BBC High Quality streams, you should use *.mp4*.
+    - Line 4: The file path in which VLC is installed, eg */Applications/VLC*
+    - Line 5: This line is optional and allows you to specify a number of minutes that is deducted from each scheduled start time and added to each scheduled end time.  This can be useful to ensure that VLC's recorded stream has properly stabilised and to ensure you don't prematurely cut off the end of the programme.  I'd suggest a value of 2 for this line.
+
+You're now ready to run the recorder.
+
 
 ## Running internet-radio-recorder
 
-Make sure you're in the folder where you've created the two text files (schedule.txt and params.txt).  Then type:
+Make sure you're in the *bbc-radio-recorder* folder, and then type:
 
         nvm start
+
+The recorder will now start up, first reading and formatting your parameters and schedule into its own internal format.
 
 The recorder is designed to be a long-running script (eg running for days or weeks).
 
@@ -117,6 +138,8 @@ You can now play back these files using a media player such as VLC or any other 
 You can edit and transcode the recordings using a suitable audio editor.  I recommend the Free, Open Source 
 [Audacity](https://www.audacityteam.org/) editor for this.
 
+
+Enjoy listening to your BBC Radio Recordings with all their high quality audio sound!!
 
 ## License
 
