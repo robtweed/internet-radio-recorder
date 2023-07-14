@@ -1,14 +1,14 @@
 {
   "name": "internet-radio-recorder",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "config": {
-    "date": "13 July 2023"
+    "date": "14 July 2023"
   },
   "description": "VLC-based Internet Radio Recorder",
   "main": "./recorder.mjs",
   "type": "module",
   "engines" : {
-    "node" : ">=18.0.0"
+    "node" : ">=18.11.0"
   },
   "scripts": {
     "start": "node node_modules/internet-radio-recorder/recorder.mjs"

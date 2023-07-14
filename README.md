@@ -14,7 +14,7 @@ It has been designed specifically for use with the high-quality BBC radio stream
 
 ## What are its dependencies?
 
-*internet-radio-recorder* is designed for use with Node.js version 18 or later.  You need to have installed Node.js on your MacOS system (I recommend using [NVM](https://github.com/nvm-sh/nvm) to install and update Node.js).
+*internet-radio-recorder* is designed for use with Node.js version 18.11 or later.  You need to have installed Node.js on your MacOS system (I recommend using [NVM](https://github.com/nvm-sh/nvm) to install and update Node.js).
 
 *internet-radio-recorder* has been developed for use on MacOS systems.  It would be relatively straightforward to adapt it for use with other operating systems.
 
@@ -60,7 +60,7 @@ The current version will only run on an Apple Mac computer running MacOS (any ve
 
 Make sure you have the following installed on your computer:
 
-- Node.js version 18.x or later
+- Node.js version 18.11 or later
 - VLC (version 3.x or later)
 - git (this is usually included in XCode on a Mac, but other options may be available - check on Google).
 
@@ -108,11 +108,13 @@ You're now ready to run the recorder.
 
 Make sure you're in the *bbc-radio-recorder* folder, and then type:
 
-        nvm start
+        npm start
 
 The recorder will now start up, first reading and formatting your parameters and schedule into its own internal format.
 
-The recorder is designed to be a long-running script (eg running for days or weeks).
+It takes a minute before it begins to process the schedule, so be patient.
+
+The recorder is designed to be a long-running script (eg running for days or weeks), so you can safely leave it to run on your Mac.  Of course you'll need to leave your Mac running whenever you run the *internet-raddio-recorder*.
 
 When started, or at the start of each new day, it checks the schedule for any programmed events.
 
@@ -123,6 +125,15 @@ If a recording is in progress, then at each minute, it also checks to see whethe
 ## Stopping internet-radio-recorder
 
 Simply stop the recorder process by typing *CTRL & C*.
+
+
+## Restarting internet-radio-recorder
+
+You can safely restart the recorder by typing:
+
+        npm start
+
+It will ignore any earlier dates and times in the *schedule.txt* file and carry on from the current date and time.  If you've edited the *schedule.txt* file, it will take account of any changes/additions you've made.
 
 
 ## Playing Back Recordings
