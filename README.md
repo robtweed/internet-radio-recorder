@@ -1,4 +1,4 @@
-# internet-radio-recorder: Node.js VLC-Based Internet Radio Recorder for MacOS
+# internet-radio-recorder: Unattended, scheduled recording of internet streams using Node.js and VLC
  
 Rob Tweed <rtweed@mgateway.com>  
 13 July 2023, MGateway Ltd [https://www.mgateway.com](https://www.mgateway.com)  
@@ -8,7 +8,7 @@ Twitter: @rtweed
 
 ## What is internet-radio-recorder?
 
-*internet-radio-recorder* is a Node.js module for unnattended scheduled recording of Internet Radio Streams.
+*internet-radio-recorder* is a Node.js module for unattended scheduled recording of Internet Radio Streams.
 
 It has been designed specifically for use with the high-quality BBC radio streams, but could be adapted for use with other Internet Radio Streams.
 
