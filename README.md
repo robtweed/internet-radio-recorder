@@ -8,7 +8,7 @@ Twitter: @rtweed
 
 ## What is internet-radio-recorder?
 
-*internet-radio-recorder* is a Node.js module for recording Internet Radio Streams.
+*internet-radio-recorder* is a Node.js module for unnattended scheduled recording of Internet Radio Streams.
 
 It has been designed specifically for use with the high-quality BBC radio streams, but could be adapted for use with other Internet Radio Streams.
 
@@ -29,7 +29,8 @@ You will need to find the file path in which VLC is installed.  This is typicall
 ## Can you schedule programmes?
 
 Yes! *internet-radio-recorder* has been designed to work with a simple schedule text file in which you 
-specify the programme(s) you want to record.
+specify the programme(s) you want to record.  Once you set the module running, you can leave it
+unattended to automatically record scheduled programmes.
 
 I actually wrote and designed *internet-radio-recorder* to record the BBC Proms broadcasts, and you'll find an example
 schedule file for the first part of the 2023 BBC Proms season included in the installation repository.  Simply edit this file to your own needs.
@@ -96,6 +97,10 @@ Now do the following using the MacOS Terminal window:
     This file consists of 4 or 5 lines:
 
     - Line 1: the URL for the Internet Radio Stream you want to use
+
+      You can use this 
+[list of the most current URLs for every BBC Radio channel](https://gist.github.com/bpsib/67089b959e4fa898af69fea59ad74bc3)
+
     - Line 2: The file path into which you want *internet-radio-recorder* to create its files.  Note that this folder must already exist before running *internet-radio-recorder*
     - Line 3: The file extension for the files that *internet-radio-recorder* will create.  For the BBC High Quality streams, you should use *.mp4*.
     - Line 4: The file path in which VLC is installed, eg */Applications/VLC*
