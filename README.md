@@ -94,7 +94,7 @@ Now do the following using a Terminal window:
 
   - params.txt.mac
 
-    This is a Linux version of the parameters file.  If you are using a Linux system (eg a Raspberry Pi),
+    This is a Mac OS version of the parameters file.  If you are using an Apple Mac computer,
 rename this file to params.txt.
 
     This file allows you to customise the recorder for your own Mac system.  Use the included copy as a starting point and edit it as needed.
