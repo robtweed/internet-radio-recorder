@@ -10,20 +10,24 @@ Twitter: @rtweed
 
 *internet-radio-recorder* is a Node.js module for unattended scheduled recording of Internet Radio Streams.
 
+This version will work on Mac OS and Linux machines, including the Raspberry Pi.
+
 It has been designed specifically for use with the high-quality BBC radio streams, but could be adapted for use with other Internet Radio Streams.
 
 ## What are its dependencies?
 
-*internet-radio-recorder* is designed for use with Node.js version 18.11 or later.  You need to have installed Node.js on your MacOS system (I recommend using [NVM](https://github.com/nvm-sh/nvm) to install and update Node.js).
+*internet-radio-recorder* is designed for use with Node.js version 18.11 or later.  You need to have installed Node.js on your system (I recommend using [NVM](https://github.com/nvm-sh/nvm) to install and update Node.js).
 
-*internet-radio-recorder* has been developed for use on MacOS systems.  It would be relatively straightforward to adapt it for use with other operating systems.
+*internet-radio-recorder* has been developed for use on MacOS and Linux systems (eg Raspberry Pi).
 
 *internet-radio-recorder* requires the [VLC Media Player](https://www.videolan.org/) 
 to have been pre-installed on the system, and uses its command-line API to record the stream to a file.
 
-You will need to find the file path in which VLC is installed.  This is typically something like:
+If you are using a Mac, you will need to find the file path in which VLC is installed.  This is typically something like:
 
         /Applications/VLC.app/
+
+On Linux systems, VLC is usually able to be run from the command line with the command *vlc*.
 
 
 ## Can you schedule programmes?
@@ -57,16 +61,14 @@ eg:
 
 The easiest way to use the *internet-radio-recorder* module is to use my pre-built installation repository.
 
-The current version will only run on an Apple Mac computer running MacOS (any version).
-
 Make sure you have the following installed on your computer:
 
 - Node.js version 18.11 or later
 - VLC (version 3.x or later)
-- git (this is usually included in XCode on a Mac, but other options may be available - check on Google).
+- git (this is usually included in XCode on a Mac, but other options may be available - check on Google. It is readily available as a standard package for Linux).
 
 
-Now do the following using the MacOS Terminal window:
+Now do the following using a Terminal window:
 
 - Navigate to the folder of your choice, and then clone my BBC Radio Recorder repository:
 
@@ -84,15 +86,18 @@ Now do the following using the MacOS Terminal window:
         npm install
 
 
-- You'll see two text files in the *bbc-radio-recorder* folder:
+- You'll see three text files in the *bbc-radio-recorder* folder:
 
   - schedule.txt
 
     This is the schedule file.  Use the included copy as a starting point and edit it as needed.  See the earlier section above that describes its format.
 
-  - params.txt
+  - params.txt.mac
 
-    This allows you to customise the recorder for your own system.  Use the included copy as a starting point and edit it as needed.
+    This is a Linux version of the parameters file.  If you are using a Linux system (eg a Raspberry Pi),
+rename this file to params.txt.
+
+    This file allows you to customise the recorder for your own Mac system.  Use the included copy as a starting point and edit it as needed.
 
     This file consists of 4 or 5 lines:
 
@@ -105,6 +110,26 @@ Now do the following using the MacOS Terminal window:
     - Line 3: The file extension for the files that *internet-radio-recorder* will create.  For the BBC High Quality streams, you should use *.mp4*.
     - Line 4: The file path in which VLC is installed, eg */Applications/VLC*
     - Line 5: This line is optional and allows you to specify a number of minutes that is deducted from each scheduled start time and added to each scheduled end time.  This can be useful to ensure that VLC's recorded stream has properly stabilised and to ensure you don't prematurely cut off the end of the programme.  I'd suggest a value of 2 for this line.
+
+  - params.txt.linux
+
+    This is a Linux version of the parameters file.  If you are using a Linux system (eg a Raspberry Pi),
+rename this file to params.txt.
+
+    This file allows you to customise the recorder for your own Linux system.  Use the included copy as a starting point and edit it as needed.
+
+    This file consists of 4 or 5 lines:
+
+    - Line 1: the URL for the Internet Radio Stream you want to use
+
+      You can use this 
+[list of the most current URLs for every BBC Radio channel](https://gist.github.com/bpsib/67089b959e4fa898af69fea59ad74bc3)
+
+    - Line 2: The file path into which you want *internet-radio-recorder* to create its files.  Note that this folder must already exist before running *internet-radio-recorder*
+    - Line 3: The file extension for the files that *internet-radio-recorder* will create.  For the BBC High Quality streams, you should use *.mp4*.
+    - Line 4: The VLC command line command, usually: *vlc*
+    - Line 5: This line is optional and allows you to specify a number of minutes that is deducted from each scheduled start time and added to each scheduled end time.  This can be useful to ensure that VLC's recorded stream has properly stabilised and to ensure you don't prematurely cut off the end of the programme.  I'd suggest a value of 2 for this line.
+
 
 You're now ready to run the recorder.
 
@@ -119,13 +144,27 @@ The recorder will now start up, first reading and formatting your parameters and
 
 It takes a minute before it begins to process the schedule, so be patient.
 
-The recorder is designed to be a long-running script (eg running for days or weeks), so you can safely leave it to run on your Mac.  Of course you'll need to leave your Mac running whenever you run the *internet-raddio-recorder*.
+The recorder is designed to be a long-running script (eg running for days or weeks), so you can safely leave it to run on your computer.  Of course you'll need to leave your computer running whenever you run the *internet-raddio-recorder*.
 
 When started, or at the start of each new day, it checks the schedule for any programmed events.
 
 Every minute it checks the time to see whether it needs to start a scheduled recording.  If so, it spawns a new VLC process to record the programme.
 
 If a recording is in progress, then at each minute, it also checks to see whether it matches any scheduled end time.  If so it sends a *kill* message to the VLC process which terminates the recording.
+
+
+Note: you may see the following error appearing on a Linux / Raspberry Pi system when a recording starts:
+
+        stderr: [01b8e2f8] vlcpulse audio output error: PulseAudio server connection failure: Connection refused
+        
+        stderr: [01bad320] main interface error: no suitable interface module
+        [01b11b58] main libvlc error: interface "globalhotkeys,none" initialization failed
+
+This can be ignored: the output file will still be created, though you may need to copy it to a 
+different computer in order to play it back if you are using a headless Linux system or Raspberry Pi
+(ie a server version without the desktop UI installed).
+
+
 
 ## Stopping internet-radio-recorder
 

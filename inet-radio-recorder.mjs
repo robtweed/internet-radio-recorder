@@ -27,6 +27,7 @@
 */
 
 import { fork } from 'node:child_process';
+import os from 'os';
 import path from 'path';
 import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
@@ -40,8 +41,10 @@ let days = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 
 let recorder = function(schedule, url, filePath, ext, vlcPath) {
 
-  if (vlcPath.slice(-1) !== '/') vlcPath = vlcPath + '/';
-  vlcPath = vlcPath + 'Contents/MacOS/VLC';
+  if (os.platform() === 'darwin') {
+    if (vlcPath.slice(-1) !== '/') vlcPath = vlcPath + '/';
+    vlcPath = vlcPath + 'Contents/MacOS/VLC';
+  }
 
   let started = true;
 

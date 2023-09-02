@@ -26,10 +26,21 @@
 
 */
 
-//  Note: you must have installed VLC on your MacOS system
+//  Note: you must have installed VLC on your MacOS or Raspberry Pi system
+
+//  On a headless Raspberry Pi (ie without Desktop UI), you should be able to install 
+//   the bare-bones VLC packages using
+//    apt install vlc-bin
+//    apt install vlc-plugin-base
+//
+//  However a full install is probably also ok:
+//    apt install vlc
 
 //  Standalone test using VLC in OS X:
 // /Applications/VLC.app/Contents/MacOS/VLC -I rc http://a.files.bbci.co.uk/media/live/manifesto/audio/simulcast/hls/uk/sbr_high/ak/bbc_radio_three.m3u8 --sout file/ts:vlc-test.mp4
+
+//  Standalone test using VLC on Raspberry Pi:
+// /vlc -I rc http://a.files.bbci.co.uk/media/live/manifesto/audio/simulcast/hls/uk/sbr_high/ak/bbc_radio_three.m3u8 --sout file/ts:vlc-test.mp4
 
 
 import { open } from 'node:fs/promises';
@@ -43,6 +54,8 @@ let radio_recorder = async function(paramsPath, schedulePath) {
     const file = await open(filePath);
 
     for await (const line of file.readLines()) {
+      if (line === '') continue;
+      if (!line.includes(' ')) continue;
       let pcs = line.split(' ');
 
       let start = pcs[1].split(':');
