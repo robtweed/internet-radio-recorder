@@ -8,7 +8,7 @@ Twitter: @rtweed
 
 ## What is internet-radio-recorder?
 
-*internet-radio-recorder* is a Node.js module for unattended scheduled recording of Internet Radio Streams.
+*internet-radio-recorder* is a JavaScript module for unattended scheduled recording of Internet Radio Streams.  It will work with both Node.js and Bun.js.
 
 This version will work on Mac OS and Linux machines, including the Raspberry Pi.
 
@@ -16,7 +16,11 @@ It has been designed specifically for use with the high-quality BBC radio stream
 
 ## What are its dependencies?
 
-*internet-radio-recorder* is designed for use with Node.js version 18.11 or later.  You need to have installed Node.js on your system (I recommend using [NVM](https://github.com/nvm-sh/nvm) to install and update Node.js).
+*internet-radio-recorder* is designed for use with Node.js version 18.11 or later, or with any version
+of Bun.js.  You need therefore need to have installed either Node.js or Bun.js on your system.
+
+- for Node.js, I recommend using [NVM](https://github.com/nvm-sh/nvm) to install and update Node.js
+- for [Bun.js it's even simpler](https://bun.sh/docs/installation)
 
 *internet-radio-recorder* has been developed for use on MacOS and Linux systems (eg Raspberry Pi).
 
@@ -52,18 +56,13 @@ eg:
 **Note that this version does not allow for programmes that extend beyond midnight into the next day!**
 
 
-## Installing internet-radio-recorder
-
-        npm install internet-radio-recorder
-
-
 ## Using internet-radio-recorder to Record from a BBC Radio Internet Stream
 
 The easiest way to use the *internet-radio-recorder* module is to use my pre-built installation repository.
 
 Make sure you have the following installed on your computer:
 
-- Node.js version 18.11 or later
+- Node.js version 18.11 or later or Bun.js (any version)
 - VLC (version 3.x or later)
 - git (this is usually included in XCode on a Mac, but other options may be available - check on Google. It is readily available as a standard package for Linux).
 
@@ -83,7 +82,13 @@ Now do the following using a Terminal window:
 
 - Install the *internet-radio-recorder* module:
 
+  - Node.js:
+
         npm install
+
+  - Bun.js:
+
+        bun install
 
 
 - You'll see three text files in the *bbc-radio-recorder* folder:
@@ -94,7 +99,7 @@ Now do the following using a Terminal window:
 
   - params.txt.mac
 
-    This is a Mac OS version of the parameters file.  If you are using an Apple Mac computer,
+    This is a Mac OS version of the parameters file.  **IMPORTANT**: If you are using an Apple Mac computer,
 rename this file to params.txt.
 
     This file allows you to customise the recorder for your own Mac system.  Use the included copy as a starting point and edit it as needed.
@@ -113,7 +118,7 @@ rename this file to params.txt.
 
   - params.txt.linux
 
-    This is a Linux version of the parameters file.  If you are using a Linux system (eg a Raspberry Pi),
+    This is a Linux version of the parameters file.  **IMPORTANT**: If you are using a Linux system (eg a Raspberry Pi),
 rename this file to params.txt.
 
     This file allows you to customise the recorder for your own Linux system.  Use the included copy as a starting point and edit it as needed.
@@ -138,7 +143,14 @@ You're now ready to run the recorder.
 
 Make sure you're in the *bbc-radio-recorder* folder, and then type:
 
+- Node.js:
+
         npm start
+
+- Bun.js:
+
+        bun start
+
 
 The recorder will now start up, first reading and formatting your parameters and schedule into its own internal format.
 
@@ -176,6 +188,10 @@ Simply stop the recorder process by typing *CTRL & C*.
 You can safely restart the recorder by typing:
 
         npm start
+
+or
+
+        bun start
 
 It will ignore any earlier dates and times in the *schedule.txt* file and carry on from the current date and time.  If you've edited the *schedule.txt* file, it will take account of any changes/additions you've made.
 

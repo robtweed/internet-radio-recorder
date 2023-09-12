@@ -1,8 +1,8 @@
 {
   "name": "internet-radio-recorder",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "config": {
-    "date": "1 September 2023"
+    "date": "12 September 2023"
   },
   "description": "VLC-based Internet Radio Recorder",
   "main": "./recorder.mjs",
